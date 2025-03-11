@@ -43,8 +43,8 @@ The system integrates with GoHighLevel CRM through webhooks:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/chiro-lead-scoring.git
-   cd chiro-lead-scoring
+   git clone https://github.com/Zampig/patientscoringmenu.git
+   cd patientscoringmenu
    ```
 
 2. Install dependencies:
@@ -92,4 +92,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - GoHighLevel for CRM integration capabilities
 - Next.js team for the React framework
-- TailwindCSS for the styling framework 
+- TailwindCSS for the styling framework
