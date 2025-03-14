@@ -1,36 +1,25 @@
-# Chiropractic Lead Scoring System
+# Patient Engagement Dashboard
 
-A custom chiropractic patient form that calculates lead scores (0-100) and integrates with GoHighLevel CRM.
+A dashboard for visualizing patient engagement scores from GoHighLevel. This application allows chiropractic practices to monitor and analyze patient engagement metrics to improve patient retention and satisfaction.
 
 ## Features
 
-- Multi-step form with smooth transitions
-- Patient information collection
-- Treatment feedback assessment
-- Future interest evaluation
-- Lead scoring algorithm (0-100)
-- GoHighLevel CRM integration
-- Mobile-responsive design
-- HIPAA-compliant data handling
+- **Summary Section**: Displays key metrics like Average Engagement Score and Current Engagement Score
+- **Visual Charts**: 
+  - Pie chart showing distribution of patients by engagement score ranges
+  - Bar chart displaying patients by engagement categories
+- **Filtering Capabilities**: Filter patients by score range, communication method, and search terms
+- **Date Range Selection**: View data for specific time periods
+- **Patient List**: Sortable list of patients with engagement scores
+- **Data Export**: Export patient data to Excel/CSV
 
-## Lead Scoring Algorithm
+## Tech Stack
 
-The system uses a weighted scoring algorithm that processes form responses to generate a 0-100 retention score:
-
-- Pain Level (15%): Lower current pain levels indicate better treatment outcomes
-- Satisfaction Level (25%): Higher satisfaction indicates better patient experience
-- Improvement Rate (20%): Higher improvement rates indicate effective treatment
-- Likelihood to Return (25%): Higher likelihood indicates better retention potential
-- Referral Potential (10%): Higher referral potential indicates patient advocacy
-- Additional Services Interest (5%): More interest in additional services indicates engagement
-
-## GoHighLevel Integration
-
-The system integrates with GoHighLevel CRM through webhooks:
-
-- High Score (80-100): Added to "High Retention" pipeline and tagged as "Likely to refer"
-- Medium Score (50-79): Added to "Nurture" campaign with automated follow-ups
-- Low Score (0-49): Added to "At Risk" pipeline with immediate staff notification
+- Next.js
+- React
+- Chart.js
+- TailwindCSS
+- GoHighLevel API Integration
 
 ## Getting Started
 
@@ -38,13 +27,14 @@ The system integrates with GoHighLevel CRM through webhooks:
 
 - Node.js 14.x or higher
 - npm or yarn
+- GoHighLevel account with API access
 
 ### Installation
 
 1. Clone the repository:
    ```
-   git clone https://github.com/Zampig/patientscoringmenu.git
-   cd patientscoringmenu
+   git clone https://github.com/yourusername/patient-engagement-dashboard.git
+   cd patient-engagement-dashboard
    ```
 
 2. Install dependencies:
@@ -52,10 +42,11 @@ The system integrates with GoHighLevel CRM through webhooks:
    npm install
    ```
 
-3. Set up environment variables:
-   Create a `.env.local` file in the root directory with the following variables:
+3. Create a `.env.local` file in the root directory with the following variables:
    ```
-   NEXT_PUBLIC_GHL_WEBHOOK_URL=your_gohighlevel_webhook_url
+   GHL_CLIENT_ID=your_gohighlevel_client_id
+   GHL_CLIENT_SECRET=your_gohighlevel_client_secret
+   GHL_REDIRECT_URI=your_redirect_uri
    ```
 
 4. Run the development server:
@@ -63,26 +54,53 @@ The system integrates with GoHighLevel CRM through webhooks:
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the form.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the dashboard.
+
+## GoHighLevel Integration
+
+### Required Custom Fields
+
+For this dashboard to work properly, you need to create the following custom fields in GoHighLevel:
+
+1. **current_engagement_score**: Numeric field (0-50) representing the patient's current engagement score
+2. **average_engagement_score**: Numeric field (0-50) representing the patient's average engagement score over time
+3. **preferred_communication_method**: Text field with values like "email", "phone", or "text"
+
+### Embedding in GoHighLevel
+
+To embed this dashboard in GoHighLevel:
+
+1. Deploy this application to a hosting service like Vercel or Netlify
+2. Create a custom app in GoHighLevel Developer Portal
+3. Add a custom menu item in GoHighLevel that links to your deployed application with the following URL format:
+   ```
+   https://your-deployed-app.com/embed?locationId={locationId}&accessToken={accessToken}
+   ```
+
+## Development
+
+### Mock Data
+
+During development, the application uses mock data if GoHighLevel credentials are not provided. This allows you to develop and test the UI without connecting to the actual API.
+
+### API Endpoints
+
+- **/api/patients**: Fetches patient data from GoHighLevel
 
 ## Deployment
 
-The application can be deployed to Vercel with the following steps:
+### Vercel
+
+The easiest way to deploy this application is with Vercel:
 
 1. Push your code to a GitHub repository
-2. Connect your repository to Vercel
+2. Import the repository in Vercel
 3. Configure environment variables in Vercel dashboard
 4. Deploy
 
-## Security Considerations
+### Other Hosting Options
 
-- All communications use HTTPS
-- Proper CORS settings prevent unauthorized access
-- Rate limiting prevents abuse
-- PHI is not stored in logs or analytics
-- Form data is cleared from local storage after submission
-- Sessions timeout after inactivity
-- Privacy policy and consent mechanisms are implemented
+You can also deploy to other hosting services like Netlify, AWS, or DigitalOcean by following their respective deployment guides for Next.js applications.
 
 ## License
 
@@ -90,6 +108,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- GoHighLevel for CRM integration capabilities
+- GoHighLevel for their API
 - Next.js team for the React framework
 - TailwindCSS for the styling framework
+- Chart.js for the visualization library
