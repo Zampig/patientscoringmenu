@@ -2,6 +2,7 @@
 /node_modules
 /.pnp
 .pnp.js
+patient-engagement-dashboard/node_modules/
 
 # testing
 /coverage
