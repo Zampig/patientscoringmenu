@@ -148,7 +148,7 @@ const GHLDashboard: React.FC = () => {
   const getGaugeOptions = (score: number) => {
     return {
       chart: {
-        type: 'radialBar',
+        type: 'radialBar' as const,
         offsetY: -20,
         sparkline: {
           enabled: true
@@ -207,7 +207,7 @@ const GHLDashboard: React.FC = () => {
   const getLineChartOptions = (patient: PatientScore) => {
     return {
       chart: {
-        type: 'line',
+        type: 'line' as const,
         zoom: {
           enabled: false
         },
@@ -219,7 +219,7 @@ const GHLDashboard: React.FC = () => {
         enabled: false
       },
       stroke: {
-        curve: 'smooth',
+        curve: 'smooth' as const,
         width: 3
       },
       grid: {
@@ -258,7 +258,7 @@ const GHLDashboard: React.FC = () => {
   const getComparisonChartOptions = () => {
     return {
       chart: {
-        type: 'bar',
+        type: 'bar' as const,
         toolbar: {
           show: false
         }
