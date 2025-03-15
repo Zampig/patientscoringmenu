@@ -20,7 +20,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "apexcharts": "^3.45.1",
+    "apexcharts": "^4.0.0",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.2",
     "chart.js": "^4.4.0",
